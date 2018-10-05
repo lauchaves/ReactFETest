@@ -1,0 +1,1 @@
+export const reportModel = {report: null};

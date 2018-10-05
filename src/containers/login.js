@@ -33,7 +33,7 @@ class Login extends Component {
     render() {
       const { redirect } = this.state;
       if(redirect){
-        return <Redirect to='/home'/>
+        return <Redirect to='/reports'/>
       }
       return <LoginForm isLogged={this.state.isLogged} model={this.state.model}  handleSubmit={this.handleSubmit} />;
     };

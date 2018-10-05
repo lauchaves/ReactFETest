@@ -1,29 +1,46 @@
 $mainColor:  #3b5998;
-$boxShadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
-.centerContainer {
-  width: 100%;
-  margin: auto;
-  position: fixed;
-  top: 20%;
+* {box-sizing: border-box}
+
+.container {
+  padding: 16px;
 }
 
+.login-form {
+  width: 340px;
+  margin: 50px auto;
+}
+
+.form-control, .btn {
+  min-height: 38px;
+  border-radius: 2px;
+}
+
+/* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
-  padding: 12px 20px;
-  margin: 4px 0;
+  padding: 15px;
+  margin: 5px 0 22px 0;
   display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  border: none;
+  background: #f1f1f1;
 }
 
-button {
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.buttonCustom {
   background-color: $mainColor;
   color: white;
   padding: 14px 20px;
@@ -35,14 +52,4 @@ button {
 
 button:hover {
   opacity: 0.8;
-}
-
-.containerStyle {
-  text-align: center;
-  position: relative;
-  margin: 0 auto 100px;
-  max-width:400px;
-  padding: 10px 35px 35px;
-  box-shadow: $boxShadow;
-  z-index: 1 ;
 }

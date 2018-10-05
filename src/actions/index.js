@@ -14,7 +14,7 @@ export const login = model => {
   });
 
   if (isLogged) {
-    console.log('islogged true');
+    localStorage.setItem("userLogged", model.email);
     return {type: LOGIN_SUCCESS, payload: model.email};
   }
   else {

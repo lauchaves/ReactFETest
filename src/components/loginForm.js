@@ -23,10 +23,12 @@ class LoginForm extends Component {
 
 
       return (
-        <div className={ cf("centerContainer") }>
-          <div className = { cf("containerStyle") }>
+        <div className={cf("login-form")}>
             <form href="#" onSubmit={ (event)=> {event.preventDefault(); handleSubmit();}}>
+            <h2 className={"text-center"}> Login</h2>
+            <hr/>
               <Field
+                className={cf("form-control")}
                 value= {model.email}
                 name="email"
                 component="input"
@@ -35,7 +37,8 @@ class LoginForm extends Component {
                 onChange={this.setValue}
               />
               <Field
-              value= {model.password}
+                className={cf("form-control")}
+                value= {model.password}
                 name="password"
                 component="input"
                 type="password"
@@ -44,12 +47,14 @@ class LoginForm extends Component {
               />
               {error}
               <div>
-                  <p>Not a Member? <Link to={'/sign-up'}>Sign Up.</Link></p>
+                  <p className={"text-center"}>Not a Member? <Link to={'/sign-up'}>Sign Up.</Link></p>
               </div>
-              <button type="submit" label="submit">Submit</button>
+              <div className={cf("form-control")}>
+                <button className={cf("buttonCustom")} type="submit" label="submit">Login</button>
+              </div>
+              
             </form>
           </div>
-        </div>
       );
   }
 }

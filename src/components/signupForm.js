@@ -19,23 +19,26 @@ class SignUpForm extends Component {
   render() {
       const { handleSubmit, isSignUp } = this.props;
       const model = this.state.model;
-      console.log('form', isSignUp);
       const error = isSignUp ? null : 'Already Registered. Try Again';
 
       return (
-        <div className={ cf("centerContainer") }>
-          <div className = { cf("containerStyle") }>
+        <div className={cf("login-form")}>
             <form href="#" onSubmit={ (event)=> {event.preventDefault(); handleSubmit();}}>
+            <h2 className={"text-center"}> Sign Up</h2>
+            <p className={"text-center"}>It's free and only takes a minute.</p>
+            <hr/>
               <Field
+                className={cf("form-control")}
                 value= {model.email}
                 name="email"
                 component="input"
                 type="text"
-                placeholder="username"
+                placeholder="Username"
                 onChange={this.setValue}
               />
               <Field
-              value= {model.password}
+                className={cf("form-control")}
+                value= {model.password}
                 name="password"
                 component="input"
                 type="password"
@@ -43,10 +46,15 @@ class SignUpForm extends Component {
                 onChange={this.setValue}
               />
               {error}
-              <button type="submit" label="submit">Create Account</button>
+              <div>
+                  <p style={{textAlign: "center"}}>Already a member? <Link to={'/login'}>Login.</Link></p>
+              </div>
+              <div className={cf("form-control")}>
+                <button className={cf("buttonCustom")} type="submit" label="submit">Create Account</button>
+              </div>
+              <p className="small text-center">By clicking the Create Accountstyle button, you agree to our <br/><a href="#">Terms &amp; Conditions</a>, and <a href="#">Privacy Policy</a></p>
             </form>
           </div>
-        </div>
       );
   }
 }
