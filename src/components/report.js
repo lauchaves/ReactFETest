@@ -8,7 +8,6 @@ export default class Report extends Component {
     
   render() {
     const { reports } = this.props;
-    console.log('deailss-->',reports);
     if (!reports) return null;
     return (
         <div>

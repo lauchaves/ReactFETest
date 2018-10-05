@@ -2,6 +2,7 @@ const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN__FAIL = 'LOGIN__FAIL';
 const SIGNUP_SUCCESS ='SIGNUP_SUCCESS';
 const SIGNUP__FAIL = 'SIGNUP__FAIL';
+const USER_NOT_LOGGED = 'USER_NOT_LOGGED';
 
 export const login = model => {
   const storedUsers = JSON.parse(localStorage.getItem("users"));
@@ -48,3 +49,8 @@ export const login = model => {
     return {type: SIGNUP_SUCCESS, payload: model.email};
   }
  }
+
+ export const logout = () => {
+   localStorage.removeItem("userLogged");
+   return {type: USER_NOT_LOGGED};
+}

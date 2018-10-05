@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import LoginForm from '../components/loginForm';
 import { login } from '../actions/index';
 import { userModel } from '../models/user';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
 
@@ -28,6 +28,7 @@ class Login extends Component {
 
     handleSubmit = () =>  {
         this.props.login(this.state.model);
+        this.props.setUserLoggedEmail(this.state.isLogged);
     };
    
     render() {
