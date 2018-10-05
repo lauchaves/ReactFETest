@@ -34,7 +34,7 @@ class SignUp extends Component {
     render() {
       const { redirect } = this.state;
       if (redirect){
-        return <Redirect to='/reports'/>;
+        return <Redirect to='/login'/>;
       }
       return <SignUpForm isSignUp={this.state.isSignUp} model={this.state.model}  handleSubmit={this.handleSubmit} />;
     };
