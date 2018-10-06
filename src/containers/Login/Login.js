@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import LoginForm from '../components/loginForm';
-import { login } from '../actions/index';
-import { userModel } from '../models/user';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import { login } from '../../actions';
+import { userModel } from '../../models/user';
 import { Redirect } from 'react-router-dom';
 
 class Login extends Component {

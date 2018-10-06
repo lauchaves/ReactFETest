@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { cf } from '../../style/client.scss';
+import { cf } from '../../styles/client.scss';
+import App from '../../styles/reports.scss'
 import Axios from 'axios';
-import Report from '../components/report';
+import Report from '../../components/Report/Report';
 
 class Search extends Component {
   
@@ -64,25 +65,38 @@ class Search extends Component {
       const loader = this.state.loader ?<center><i className="fa fa-spinner fa-spin" style={{color: "#3b5998", fontSize: "30px"}}></i></center> : null;
 
       return (
-        <div className={cf("login-form")}>
-            <form href="#" onSubmit={ (event)=> {event.preventDefault(); this.handleSubmit();}}>
+        <div>
+          <div className={App}>
             <h2 className={"text-center"}>New Search </h2>
-            <hr/>
-              <Field
-                className={cf("form-control")}
-                value= {this.state.newEmailSearch}
-                name="newEmailSearch"
-                component="input"
-                type="text"
-                placeholder="Email"
-                onChange={this.setValue}
-              />
-              <div className={cf("form-control")}>
-               {loader}
-               {searchButton}
-              </div>
-            </form>
-            <Report reports={this.state.report}/>
+            <hr style={{width: "75%"}} />
+          </div>
+          <div className={cf("login-form")}>
+              <form href="#" onSubmit={ (event)=> {event.preventDefault(); this.handleSubmit();}}>
+                <Field
+                  className={cf("form-control")}
+                  value= {this.state.newEmailSearch}
+                  name="newEmailSearch"
+                  component="input"
+                  type="text"
+                  placeholder="Email"
+                  onChange={this.setValue}
+                />
+                <div className={cf("form-control")}>
+                {loader}
+                {searchButton}
+                </div>
+              </form>
+            </div>
+           
+            {this.state.report && 
+            <div className={App}> 
+            <hr style={{width: "75%"}}/>
+                <details>
+                  <summary className={"text-center"}>{this.state.newEmailSearch}</summary>
+                  <Report reports={this.state.report}/>
+                </details>
+            </div>
+            }
           </div>
       );
   }

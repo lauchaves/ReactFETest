@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { cf } from '../../style/client.scss';
+import { cf } from '../../styles/client.scss';
 import { Link } from 'react-router-dom';
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
   
   constructor(props) {
     super(props);
@@ -17,15 +17,15 @@ class LoginForm extends Component {
    };
 
   render() {
-      const { handleSubmit } = this.props;
+      const { handleSubmit, isSignUp } = this.props;
       const model = this.state.model;
-      const error = this.props.isLogged ? null : <label> Unable to authenticate. Try Again</label> ;
-
+      const error = isSignUp ? null : <center><label className={"text-center"}>Already Registered. Try Again</label></center>;
 
       return (
         <div className={cf("login-form")}>
             <form href="#" onSubmit={ (event)=> {event.preventDefault(); handleSubmit();}}>
-            <h2 className={"text-center"}> Login</h2>
+            <h2 className={"text-center"}> Sign Up</h2>
+            <p className={"text-center"}>It's free and only takes a minute.</p>
             <hr/>
               <Field
                 className={cf("form-control")}
@@ -47,12 +47,12 @@ class LoginForm extends Component {
               />
               {error}
               <div>
-                  <p className={"text-center"}>Not a Member? <Link to={'/sign-up'}>Sign Up.</Link></p>
+                  <p style={{textAlign: "center"}}>Already a member? <Link to={'/login'}>Login.</Link></p>
               </div>
               <div className={cf("form-control")}>
-                <button className={cf("buttonCustom")} type="submit" label="submit">Login</button>
+                <button className={cf("buttonCustom")} type="submit" label="submit">Create Account</button>
               </div>
-              
+              <p className="small text-center">By clicking the Create Accountstyle button, you agree to our <br/><a href="#">Terms &amp; Conditions</a>, and <a href="#">Privacy Policy</a></p>
             </form>
           </div>
       );
@@ -60,4 +60,4 @@ class LoginForm extends Component {
 }
   
 
- export default reduxForm({ form: 'login' })(LoginForm);
+ export default reduxForm({ form: 'signup' })(SignUpForm);

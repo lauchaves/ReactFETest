@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
-import App from '../../style/reports.scss'
-import { cf } from '../../style/client.scss';
-import Report from '../components/report';
+import App from '../../styles/reports.scss'
+import Report from '../../components/Report/Report';
 import uui from 'uuid';
 
 class Reports extends Component {
-  
 
   constructor(props) {
     super(props);

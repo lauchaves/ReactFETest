@@ -4,12 +4,12 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import Login from './login';
-import SignUp from './signup';
-import Reports from './reports';
-import Search from './search';
-import Report from '../components/report';
-import {logout} from '../actions';
+import Login from '../Login/Login';
+import SignUp from '../Signup/Signup';
+import Reports from '../Reports/Reports';
+import Search from '../Search/Search';
+import Report from '../../components/Report/Report';
+import {logout} from '../../actions';
 
 class Header extends Component {
 

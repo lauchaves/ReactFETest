@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import SignUpForm from '../components/signupForm';
-import { signUp } from '../actions/index';
-import { userModel } from '../models/user';
+import SignUpForm from '../../components/SignupForm/SignupForm';
+import { signUp } from '../../actions';
+import { userModel } from '../../models/user';
 import { Link, Redirect } from 'react-router-dom';
 
 class SignUp extends Component {
