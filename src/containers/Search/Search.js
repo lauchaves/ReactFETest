@@ -4,6 +4,8 @@ import { cf } from '../../styles/client.scss';
 import App from '../../styles/reports.scss'
 import Axios from 'axios';
 import Report from '../../components/Report/Report';
+import * as constants from '../../models/constants';
+
 
 class Search extends Component {
   
@@ -50,10 +52,9 @@ class Search extends Component {
 
    handleSubmit = async () => {
        this.setState({loader: true});
+       const {proxyURL, requestURL} = constants;
        const email = this.state.newEmailSearch;
-       const proxyURL = "https://cors-anywhere.herokuapp.com/";
-       const requestURL = "https://www.beenverified.com/hk/dd/email?email="+email;
-       const searchresponse = await Axios.get(proxyURL + requestURL);
+       const searchresponse = await Axios.get(`${proxyURL}${requestURL}${email}`);
        if (searchresponse) {
           this.setState({loader: false, report: searchresponse.data});
           this.setAndSaveReport(searchresponse.data);

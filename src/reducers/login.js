@@ -1,12 +1,11 @@
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN__FAIL = 'LOGIN__FAIL';
+import * as constants from '../models/constants';
 
 export default (state = {}, action = {}) => {
   switch (action.type) {
-    case LOGIN_SUCCESS: {
+    case constants.LOGIN_SUCCESS: {
       return { loginSuccess: true, response: action.payload};
     };
-    case LOGIN__FAIL: {
+    case constants.LOGIN__FAIL: {
       return { loginSuccess: false};
     }
     default:
