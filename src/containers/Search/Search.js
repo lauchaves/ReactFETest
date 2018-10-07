@@ -5,6 +5,8 @@ import App from '../../styles/reports.scss'
 import Axios from 'axios';
 import Report from '../../components/Report/Report';
 import * as constants from '../../models/constants';
+import MediaQuery from 'react-responsive';
+import { Modal, Button } from 'react-bootstrap';
 
 
 class Search extends Component {
@@ -15,6 +17,7 @@ class Search extends Component {
       newEmailSearch: '',
       loader: false,
       report: null,
+      showModal: false,
     };
   }
 
@@ -56,7 +59,7 @@ class Search extends Component {
        const email = this.state.newEmailSearch;
        const searchresponse = await Axios.get(`${proxyURL}${requestURL}${email}`);
        if (searchresponse) {
-          this.setState({loader: false, report: searchresponse.data});
+          this.setState({loader: false, report: searchresponse.data, showModal: true});
           this.setAndSaveReport(searchresponse.data);
        }
    }
@@ -72,6 +75,7 @@ class Search extends Component {
             <hr style={{width: "75%"}} />
           </div>
           <div className={cf("login-form")}>
+              <p className={"text-center"}>Looking to find out about someone?</p>
               <form href="#" onSubmit={ (event)=> {event.preventDefault(); this.handleSubmit();}}>
                 <Field
                   className={cf("form-control")}
@@ -92,10 +96,23 @@ class Search extends Component {
             {this.state.report && 
             <div className={App}> 
             <hr style={{width: "75%"}}/>
-                <details>
-                  <summary className={"text-center"}>{this.state.newEmailSearch}</summary>
-                  <Report reports={this.state.report}/>
-                </details>
+            
+            <MediaQuery query="(min-width: 765px)">
+              <div className={cf("onCenter")}>
+                <Report reports={this.state.report}/>
+              </div>
+            </MediaQuery>
+            <MediaQuery query="(max-device-width: 765px)">
+            <div className="static-modal">
+                <Modal show={this.state.showModal}>
+                  <Modal.Body><Report reports={this.state.report}/></Modal.Body>
+                  <Modal.Footer>
+                    <Button onClick={()=> this.setState({showModal:false})}>Close</Button>
+                  </Modal.Footer>
+                </Modal>
+              </div>;
+            </MediaQuery>  
+            
             </div>
             }
           </div>

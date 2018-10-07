@@ -50,7 +50,7 @@ class Header extends Component {
         <Navbar fluid collapseOnSelect style={{zIndex: 2}}>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#brand">React FE Test</a>
+              <a href="/">React FE Test</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>

@@ -1,8 +1,8 @@
-const USER_NOT_LOGGED = 'USER_NOT_LOGGED';
+import * as constants from '../models/constants';
 
 export default (state = {}, action = {}) => {
   switch (action.type) {
-    case USER_NOT_LOGGED: {
+    case constants.USER_NOT_LOGGED: {
       return { isUserLogged: false};
     }
     default:

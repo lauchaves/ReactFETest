@@ -52,7 +52,7 @@ class SignUpForm extends Component {
               <div className={cf("form-control")}>
                 <button className={cf("buttonCustom")} type="submit" label="submit">Create Account</button>
               </div>
-              <p className="small text-center">By clicking the Create Accountstyle button, you agree to our <br/><a href="#">Terms &amp; Conditions</a>, and <a href="#">Privacy Policy</a></p>
+              <p className="small text-center">By clicking the Create Account, you agree to our <br/><a>Terms &amp; Conditions</a>, and <a>Privacy Policy</a></p>
             </form>
           </div>
       );

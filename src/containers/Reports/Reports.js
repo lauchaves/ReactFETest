@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import App from '../../styles/reports.scss'
 import Report from '../../components/Report/Report';
 import uui from 'uuid';
+import { ListGroup, Modal, Button } from 'react-bootstrap';
+import MediaQuery from 'react-responsive';
+import { cf } from '../../styles/client.scss';
 
 class Reports extends Component {
 
@@ -9,6 +12,9 @@ class Reports extends Component {
     super(props);
     this.state ={
       reports: null,
+      show: false,
+      reportInfo: null,
+      showModal: false,
     }
   }
 
@@ -28,25 +34,54 @@ class Reports extends Component {
       });
       this.setState({ reports: userReports });
     }
+  }
 
-
+  handleClick = report => {
+    this.setState({show: true, reportInfo: report, showModal: true});
   }
 
   render() {
+    const showReport = this.state.show?  
+    
+    (<div>
+      <MediaQuery query="(min-width: 765px)">
+        <Report key={uui.v4()} reports={this.state.reportInfo}/>
+      </MediaQuery>
+      <MediaQuery query="(max-device-width: 765px)">
+      <div className="static-modal">
+          <Modal show={this.state.showModal}>
+            <Modal.Body><Report key={uui.v4()} reports={this.state.reportInfo}/></Modal.Body>
+
+            <Modal.Footer>
+              <Button onClick={()=> this.setState({showModal:false})}>Close</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>;
+      </MediaQuery>  
+      </div>
+  )
+    : null;
+
+
     return(
+        <div className={cf("onCenter")}>
         <div className={App}> 
             <h2 className={"text-center"}>My Reports</h2>
-            <hr style={{width: "75%"}}/>
+            <hr style={{width: "95%"}}/>
+            <center>
+            <ListGroup className="list-group col-sm-4">
             {this.state.reports && this.state.reports.map(report=>
                 <details key={uui.v4()}>
-                  <summary className={"text-center"}>{report.emails && report.emails[0].email_address}</summary>
-                  <Report key={uui.v4()} reports={report}/>
+                  <summary className={"text-center"} onClick={()=>this.handleClick(report)}>{report.emails && report.emails[0].email_address}</summary>
                 </details>
-            )}
+                )}
+            </ListGroup>
+            </center>
+            {showReport}
+        </div>
+
         </div>
   )}
 }
 
 export default Reports;
-
-

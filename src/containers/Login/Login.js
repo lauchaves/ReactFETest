@@ -28,7 +28,7 @@ class Login extends Component {
 
     handleSubmit = () =>  {
         this.props.login(this.state.model);
-        this.props.setUserLoggedEmail(this.state.isLogged);
+        this.props.setUserLoggedEmail(this.state.redirect);
     };
    
     render() {
