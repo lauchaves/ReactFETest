@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { cf } from '../../styles/client.scss';
+import '../../styles/client.scss';
 import App from '../../styles/reports.scss'
 import Axios from 'axios';
 import Report from '../../components/Report/Report';
@@ -22,7 +22,7 @@ class Search extends Component {
   }
 
   setValue = (event, newValue, previousValue, name) => {
-    this.state.newEmailSearch = newValue;
+    this.setState({newEmailSearch: newValue});
    };
 
    setAndSaveReport = report => {
@@ -43,6 +43,7 @@ class Search extends Component {
             reportExists = true;
           }
         }
+        return reportExists;
       });
 
       if(!reportExists){
@@ -65,7 +66,7 @@ class Search extends Component {
    }
 
   render() {
-      const searchButton = this.state.loader ? null :  <button className={cf("buttonCustom")} type="submit" label="submit">Search</button>;
+      const searchButton = this.state.loader ? null :  <button className={"buttonCustom"} type="submit" label="submit">Search</button>;
       const loader = this.state.loader ?<center><i className="fa fa-spinner fa-spin" style={{color: "#3b5998", fontSize: "30px"}}></i></center> : null;
 
       return (
@@ -74,11 +75,11 @@ class Search extends Component {
             <h2 className={"text-center"}>New Search </h2>
             <hr style={{width: "75%"}} />
           </div>
-          <div className={cf("login-form")}>
+          <div className={"login-form"}>
               <p className={"text-center"}>Looking to find out about someone?</p>
               <form href="#" onSubmit={ (event)=> {event.preventDefault(); this.handleSubmit();}}>
                 <Field
-                  className={cf("form-control")}
+                  className={"form-control"}
                   value= {this.state.newEmailSearch}
                   name="newEmailSearch"
                   component="input"
@@ -86,7 +87,7 @@ class Search extends Component {
                   placeholder="Email"
                   onChange={this.setValue}
                 />
-                <div className={cf("form-control")}>
+                <div>
                 {loader}
                 {searchButton}
                 </div>
@@ -98,7 +99,7 @@ class Search extends Component {
             <hr style={{width: "75%"}}/>
             
             <MediaQuery query="(min-width: 765px)">
-              <div className={cf("onCenter")}>
+              <div className={"onCenter"}>
                 <Report reports={this.state.report}/>
               </div>
             </MediaQuery>

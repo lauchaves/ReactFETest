@@ -4,7 +4,7 @@ import Report from '../../components/Report/Report';
 import uui from 'uuid';
 import { ListGroup, Modal, Button } from 'react-bootstrap';
 import MediaQuery from 'react-responsive';
-import { cf } from '../../styles/client.scss';
+import '../../styles/client.scss';
 
 class Reports extends Component {
 
@@ -31,6 +31,7 @@ class Reports extends Component {
         if (storageReport.user === userLogged) {
           userReports.push(storageReport.report)
         }
+        return userReports;
       });
       this.setState({ reports: userReports });
     }
@@ -64,7 +65,7 @@ class Reports extends Component {
 
 
     return(
-        <div className={cf("onCenter")}>
+        <div className={"onCenter"}>
         <div className={App}> 
             <h2 className={"text-center"}>My Reports</h2>
             <hr style={{width: "95%"}}/>

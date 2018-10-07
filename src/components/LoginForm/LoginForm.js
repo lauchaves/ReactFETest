@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { cf } from '../../styles/client.scss';
+import '../../styles/client.scss';
 import { Link } from 'react-router-dom';
 
 class LoginForm extends Component {
@@ -13,7 +13,9 @@ class LoginForm extends Component {
   }
 
   setValue = (event, newValue, previousValue, name) => {
-    this.state.model[name] = newValue;
+    let modelState = Object.assign({}, this.state);
+    modelState.model[name] = newValue;
+    this.setState(modelState);
    };
 
   render() {
@@ -23,12 +25,12 @@ class LoginForm extends Component {
 
 
       return (
-        <div className={cf("login-form")}>
+        <div className={"login-form"}>
             <form href="#" onSubmit={ (event)=> {event.preventDefault(); handleSubmit();}}>
             <h2 className={"text-center"}> Login</h2>
             <hr/>
               <Field
-                className={cf("form-control")}
+                className={"form-control"}
                 value= {model.email}
                 name="email"
                 component="input"
@@ -37,7 +39,7 @@ class LoginForm extends Component {
                 onChange={this.setValue}
               />
               <Field
-                className={cf("form-control")}
+                className={"form-control"}
                 value= {model.password}
                 name="password"
                 component="input"
@@ -49,8 +51,8 @@ class LoginForm extends Component {
               <div>
                   <p className={"text-center"}>Not a Member? <Link to={'/sign-up'}>Sign Up.</Link></p>
               </div>
-              <div className={cf("form-control")}>
-                <button className={cf("buttonCustom")} type="submit" label="submit">Login</button>
+              <div>
+                <button className={"buttonCustom"} type="submit" label="submit">Login</button>
               </div>
               
             </form>

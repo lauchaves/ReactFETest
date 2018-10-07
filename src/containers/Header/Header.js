@@ -18,11 +18,12 @@ class Header extends Component {
     this.state = {
       isLogged: true,
       redirect: false,
+      userLoggedEmail: null,
     }
   }
 
   componentWillReceiveProps(nextProps){
-    if (nextProps.response.isUserLogged == false ) {
+    if (nextProps.response.isUserLogged === false ) {
       this.setState({logout: true, userLoggedEmail: false});
       return;
     }

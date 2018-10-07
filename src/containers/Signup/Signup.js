@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import SignUpForm from '../../components/SignupForm/SignupForm';
 import { signUp } from '../../actions';
 import { userModel } from '../../models/user';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class SignUp extends Component {
 
@@ -18,7 +18,7 @@ class SignUp extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-      if (nextProps.response.signUpSuccess == true ) {
+      if (nextProps.response.signUpSuccess === true ) {
         this.setState({redirect: true});
         return;
       }

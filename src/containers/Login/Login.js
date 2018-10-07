@@ -18,8 +18,9 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-      if (nextProps.response.loginSuccess == true ) {
+      if (nextProps.response.loginSuccess === true ) {
         this.setState({redirect: true});
+        this.props.setUserLoggedEmail(true);
         return;
       }
       this.setState({ isLogged: !this.state.isLogged });
@@ -28,7 +29,6 @@ class Login extends Component {
 
     handleSubmit = () =>  {
         this.props.login(this.state.model);
-        this.props.setUserLoggedEmail(this.state.redirect);
     };
    
     render() {

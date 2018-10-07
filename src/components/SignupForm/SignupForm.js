@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { cf } from '../../styles/client.scss';
+import '../../styles/client.scss';
 import { Link } from 'react-router-dom';
 
 class SignUpForm extends Component {
@@ -13,7 +13,9 @@ class SignUpForm extends Component {
   }
 
   setValue = (event, newValue, previousValue, name) => {
-    this.state.model[name] = newValue;
+    let modelState = Object.assign({}, this.state);
+    modelState.model[name] = newValue;
+    this.setState(modelState);
    };
 
   render() {
@@ -22,13 +24,13 @@ class SignUpForm extends Component {
       const error = isSignUp ? null : <center><label className={"text-center"}>Already Registered. Try Again</label></center>;
 
       return (
-        <div className={cf("login-form")}>
+        <div className={"login-form"}>
             <form href="#" onSubmit={ (event)=> {event.preventDefault(); handleSubmit();}}>
             <h2 className={"text-center"}> Sign Up</h2>
             <p className={"text-center"}>It's free and only takes a minute.</p>
             <hr/>
               <Field
-                className={cf("form-control")}
+                className={"form-control"}
                 value= {model.email}
                 name="email"
                 component="input"
@@ -37,7 +39,7 @@ class SignUpForm extends Component {
                 onChange={this.setValue}
               />
               <Field
-                className={cf("form-control")}
+                className={"form-control"}
                 value= {model.password}
                 name="password"
                 component="input"
@@ -49,8 +51,8 @@ class SignUpForm extends Component {
               <div>
                   <p style={{textAlign: "center"}}>Already a member? <Link to={'/login'}>Login.</Link></p>
               </div>
-              <div className={cf("form-control")}>
-                <button className={cf("buttonCustom")} type="submit" label="submit">Create Account</button>
+              <div>
+                <button className={"buttonCustom"} type="submit" label="submit">Create Account</button>
               </div>
               <p className="small text-center">By clicking the Create Account, you agree to our <br/><a>Terms &amp; Conditions</a>, and <a>Privacy Policy</a></p>
             </form>
