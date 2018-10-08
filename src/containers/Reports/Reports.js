@@ -43,7 +43,6 @@ class Reports extends Component {
 
   render() {
     const showReport = this.state.show?  
-    
     (<div>
       <MediaQuery query="(min-width: 765px)">
         <Report key={uui.v4()} reports={this.state.reportInfo}/>
@@ -60,9 +59,7 @@ class Reports extends Component {
         </div>;
       </MediaQuery>  
       </div>
-  )
-    : null;
-
+    ): null;
 
     return(
         <div className={"onCenter"}>
@@ -80,7 +77,6 @@ class Reports extends Component {
             </center>
             {showReport}
         </div>
-
         </div>
   )}
 }
